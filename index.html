@@ -12,6 +12,12 @@
     <p><strong>Version:</strong> 1</p>
   </div>
 
+  <!-- NEW BLOCK (similar type of change: additive + structured) -->
+  <div id="watch">
+    <p><strong>Monitor marker:</strong> A</p>
+    <p><strong>Revision:</strong> 1</p>
+  </div>
+
   <button onclick="send()">Send to n8n</button>
   <pre id="result"></pre>
 
@@ -22,14 +28,16 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           test: "hello",
           version: 1,
-          status: "OK"
+          status: "OK",
+          marker: "A",
+          revision: 1
         })
       })
       .then(r => r.text())
-      .then(t => document.getElementById("result").innerText = t)
+      .then(t => document.getElementById("result").innerText = t);
     }
   </script>
 </body>
