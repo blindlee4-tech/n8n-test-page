@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>n8n test</title>
+</head>
+<body>
+  <h1>n8n Test Page</h1>
+  <button onclick="send()">Send to n8n</button>
+  <pre id="result"></pre>
+
+  <script>
+    function send() {
+      fetch("https://YOUR-N8N-WEBHOOK-URL", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ test: "hello" })
+      })
+      .then(r => r.text())
+      .then(t => document.getElementById("result").innerText = t)
+    }
+  </script>
+</body>
+</html>
