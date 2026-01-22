@@ -2,10 +2,16 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>n8n test</title>
+  <title>n8n test v2</title>
 </head>
 <body>
   <h1>n8n Test Page v2</h1>
+
+  <div id="status">
+    <p><strong>Status:</strong> OK</p>
+    <p><strong>Version:</strong> 1</p>
+  </div>
+
   <button onclick="send()">Send to n8n</button>
   <pre id="result"></pre>
 
@@ -16,7 +22,11 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ test: "hello" })
+        body: JSON.stringify({ 
+          test: "hello",
+          version: 1,
+          status: "OK"
+        })
       })
       .then(r => r.text())
       .then(t => document.getElementById("result").innerText = t)
